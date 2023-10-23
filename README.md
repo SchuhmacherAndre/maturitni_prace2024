@@ -1,3 +1,4 @@
 # maturitni_prace2024
 
-### to be done
+### ui/
+nextjs aplikace vyuzivana pro interakci s uzivatelem a backendem...
