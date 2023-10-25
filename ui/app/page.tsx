@@ -6,6 +6,8 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="overflow-x-hidden overflow-y-auto">
+
+      <ModeToggle />
      
 
       <div className="flex justify-center items-center space-x-4 h-screen">
