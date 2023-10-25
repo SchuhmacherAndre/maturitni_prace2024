@@ -35,6 +35,8 @@
 **/*.out
 **/*.app
 
+**/.vs
+
 # End of https://www.toptal.com/developers/gitignore/api/c++
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
