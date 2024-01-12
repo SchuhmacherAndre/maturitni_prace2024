@@ -3,3 +3,4 @@ probably gonna be using shared memory, or sockets
 then also shared DB idk what probably mongodb, or mariadb for ease of use...
 also probably gonna add event handler to js that run on a loop - more like a notifier of events ig?
 pass event from backend to js and get notified or sm.. idk yet.
+instead of ipc shared memory doing sockets, ease of use, easy to setupp.. writing simple header only library for it inc++ now, after that in node
