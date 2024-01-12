@@ -18,10 +18,28 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
+import { ExclamationTriangleIcon } from "@radix-ui/react-icons"
+ 
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert"
+ 
 
 import Link from "next/link";
 
 export default function Picker() {
+
+  const [isAlertVisible, setAlertVisible] = useState(false);
+
+  const showAlert = () => {
+    setAlertVisible(true);
+  };
+
+  const hideAlert = () => {
+    setAlertVisible(false);
+  };
   
   const [selectedButtons, setSelectedButtons] = useState<number[]>([]);
 
@@ -87,9 +105,21 @@ export default function Picker() {
             </div>
           </div>
           <DrawerFooter>
-            <Button>Play</Button>
+        <div style={{ position: 'fixed', bottom: 0, right: 0, padding: 15}} >
+        {isAlertVisible && (
+              <Alert variant="destructive" onAbort={hideAlert}>
+              <ExclamationTriangleIcon className="h-4 w-4" />
+              <AlertTitle>Error</AlertTitle>
+              <AlertDescription>
+                The camera hasn't been calibrated, please calibrate in settings.
+              </AlertDescription>
+            </Alert>
+            )}
+      </div>
+
+            <Button onClick={showAlert}>Play</Button>
             <DrawerClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button variant="outline" onClick={hideAlert}>Cancel</Button>
             </DrawerClose>
           </DrawerFooter>
         </div>

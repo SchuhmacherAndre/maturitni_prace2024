@@ -20,10 +20,7 @@ export default function Settings() {
             <Link href="/calibrate">Calibrate</Link>
             </Button>
             <Button asChild variant="outline" className="h-64 w-64 text-2xl">
-            <Link href="/na">N/A</Link>
-            </Button>
-            <Button asChild variant="outline" className="h-64 w-64 text-2xl">
-            <Link href="/misc">Miscellaneous</Link>
+            <Link href="/options">Options</Link>
             </Button>
         </div>
         </div>
