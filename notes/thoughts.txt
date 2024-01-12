@@ -1,0 +1,5 @@
+ui simply for displaying, all calculations done by c++ andpassed thru by ipc communication protocls
+probably gonna be using shared memory, or sockets
+then also shared DB idk what probably mongodb, or mariadb for ease of use...
+also probably gonna add event handler to js that run on a loop - more like a notifier of events ig?
+pass event from backend to js and get notified or sm.. idk yet.
