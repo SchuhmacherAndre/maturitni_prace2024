@@ -2,14 +2,11 @@
 //
 
 #include <iostream>
-#include <mariadb/conncpp.hpp>
-
-
+#include "sockets.hpp"
 
 int main()
 {
-
-
-    std::cout << "Hello World!\n";
+	sockets->init();
+	
+	return NULL;
 }
-
