@@ -4,3 +4,13 @@ then also shared DB idk what probably mongodb, or mariadb for ease of use...
 also probably gonna add event handler to js that run on a loop - more like a notifier of events ig?
 pass event from backend to js and get notified or sm.. idk yet.
 instead of ipc shared memory doing sockets, ease of use, easy to setupp.. writing simple header only library for it inc++ now, after that in node
+couple of issues with wrong detection of dart tips, sometimes mistakes them for other stuff OR doesnt detect anythng at all
+settled for socket communication..
+"somewhat easily" created training packs with roboflow, then trained with google's online colab platform.. (using their hardware for training 😊)"
+detection of points somewhat slow, thinking of ways how to improve this, maybe downscale image... will get bad results?? -- lessen prediction %?
+need some sort of detection algorithm to detect when the dart lands, perhaps when theres something (NEW OBJECT :D) on the dartboard for over 3 seconds, and doesnt move register as dart and then predict point nums?
+need to add a manual skip button to ui game! incase player misses dartboard completely
+need to add a lot of error checking...
+finish up calibration on the ui, display camera input and fix the draggable points.. :D, for now just a placeholder
+once i move the project, need to connect both NUC and UI <- (TABLET) to same hotspot/wifi network to make sure communication always there...
+need to add autostart of all needes executables to nuc once everything cleaned up and done
