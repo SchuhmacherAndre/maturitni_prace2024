@@ -1,0 +1,89 @@
+arguments: C:\\Users\\Administrator\\Documents\\GitHub\\maturitni_prace2024\\backend\\src\\dbg\\darts.exe
+Current dir: C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src
+File verbosity level: 9
+date       time         ( uptime  ) [ thread name/id ]                   file:line     v| 
+2024-02-04 00:52:43.304 (   0.093s) [main thread     ]             loguru.cpp:841   INFO| Logging to 'everything.log', mode: 'w', verbosity: 9
+2024-02-04 00:52:43.305 (   0.093s) [main thread     ]                main.cc:12    INFO| { Will indent all log messages within this scope.
+2024-02-04 00:52:43.305 (   0.093s) [main thread     ]                main.cc:13    INFO| .   I'm hungry for some 3.142!
+2024-02-04 00:52:43.305 (   0.093s) [main thread     ]                main.cc:14       2| .   Will only show if verbosity is 2 or higher
+2024-02-04 00:52:43.305 (   0.093s) [main thread     ]                main.cc:16     ERR| .   error lool
+2024-02-04 00:52:43.305 (   0.093s) [main thread     ]                main.cc:12    INFO| } 0.000 s: Will indent all log messages within this scope.
+2024-02-04 00:52:43.305 (   0.094s) [main thread     ]             loguru.cpp:538   INFO| atexit
+
+
+
+
+
+arguments: C:\\Users\\Administrator\\Documents\\GitHub\\maturitni_prace2024\\backend\\src\\dbg\\darts.exe
+Current dir: C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src
+File verbosity level: 9
+date       time         ( uptime  ) [ thread name/id ]                   file:line     v| 
+2024-02-04 00:54:33.809 (   0.093s) [main thread     ]             loguru.cpp:841   INFO| Logging to 'everything.log', mode: 'a', verbosity: 9
+2024-02-04 00:54:33.809 (   0.093s) [main thread     ]                main.cc:12    INFO| welcome
+2024-02-04 00:54:33.809 (   0.093s) [main thread     ]             loguru.cpp:538   INFO| atexit
+
+
+
+
+
+arguments: C:\\Users\\Administrator\\Documents\\GitHub\\maturitni_prace2024\\backend\\src\\dbg\\darts.exe
+Current dir: C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src
+File verbosity level: 9
+date       time         ( uptime  ) [ thread name/id ]                   file:line     v| 
+2024-02-04 01:48:15.536 (   2.147s) [main thread     ]             loguru.cpp:841   INFO| Logging to 'everything.log', mode: 'a', verbosity: 9
+2024-02-04 01:48:15.536 (   2.147s) [main thread     ]                main.cc:27    INFO| hello world
+2024-02-04 01:48:15.536 (   2.147s) [main thread     ]                main.cc:28    INFO| establishing connection to DB...
+2024-02-04 01:48:15.537 (   2.148s) [main thread     ]             loguru.cpp:538   INFO| atexit
+
+
+
+
+
+arguments: C:\\Users\\Administrator\\Documents\\GitHub\\maturitni_prace2024\\backend\\src\\dbg\\darts.exe
+Current dir: C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src
+File verbosity level: 9
+date       time         ( uptime  ) [ thread name/id ]                   file:line     v| 
+2024-02-04 01:48:17.490 (   0.139s) [main thread     ]             loguru.cpp:841   INFO| Logging to 'everything.log', mode: 'a', verbosity: 9
+2024-02-04 01:48:17.490 (   0.139s) [main thread     ]                main.cc:27    INFO| hello world
+2024-02-04 01:48:17.490 (   0.139s) [main thread     ]                main.cc:28    INFO| establishing connection to DB...
+2024-02-04 01:48:17.490 (   0.139s) [main thread     ]             loguru.cpp:538   INFO| atexit
+
+
+
+
+
+arguments: C:\\Users\\Administrator\\Documents\\GitHub\\maturitni_prace2024\\backend\\src\\dbg\\darts.exe
+Current dir: C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src
+File verbosity level: 9
+date       time         ( uptime  ) [ thread name/id ]                   file:line     v| 
+2024-02-04 01:50:39.936 (   0.048s) [main thread     ]             loguru.cpp:841   INFO| Logging to 'everything.log', mode: 'a', verbosity: 9
+2024-02-04 01:50:39.936 (   0.048s) [main thread     ]                main.cc:28    INFO| hello world
+2024-02-04 01:50:39.936 (   0.048s) [main thread     ]                main.cc:29    INFO| establishing connection to DB...
+2024-02-04 01:50:40.211 (   0.323s) [main thread     ]             loguru.cpp:538   INFO| atexit
+
+
+
+
+
+arguments: C:\\Users\\Administrator\\Documents\\GitHub\\maturitni_prace2024\\backend\\src\\dbg\\darts.exe
+Current dir: C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src
+File verbosity level: 9
+date       time         ( uptime  ) [ thread name/id ]                   file:line     v| 
+2024-02-04 01:51:24.369 (   0.139s) [main thread     ]             loguru.cpp:841   INFO| Logging to 'everything.log', mode: 'a', verbosity: 9
+2024-02-04 01:51:24.370 (   0.139s) [main thread     ]                main.cc:28    INFO| hello world
+2024-02-04 01:51:24.370 (   0.139s) [main thread     ]                main.cc:29    INFO| establishing connection to DB...
+2024-02-04 01:51:24.626 (   0.395s) [main thread     ]                main.cc:40    INFO| óá«T
+2024-02-04 01:51:24.634 (   0.404s) [main thread     ]             loguru.cpp:538   INFO| atexit
+
+
+
+
+
+arguments: C:\\Users\\Administrator\\Documents\\GitHub\\maturitni_prace2024\\backend\\src\\dbg\\darts.exe
+Current dir: C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src
+File verbosity level: 9
+date       time         ( uptime  ) [ thread name/id ]                   file:line     v| 
+2024-02-04 01:51:46.170 (   0.093s) [main thread     ]             loguru.cpp:841   INFO| Logging to 'everything.log', mode: 'a', verbosity: 9
+2024-02-04 01:51:46.170 (   0.093s) [main thread     ]                main.cc:28    INFO| hello world
+2024-02-04 01:51:46.170 (   0.093s) [main thread     ]                main.cc:29    INFO| establishing connection to DB...
+2024-02-04 01:51:46.443 (   0.366s) [main thread     ]             loguru.cpp:538   INFO| atexit
