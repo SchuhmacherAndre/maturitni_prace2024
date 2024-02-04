@@ -105,13 +105,13 @@ C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routin
 C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(1420,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'main.cc')
   
-C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src\main.cc(75,22): warning C4244: '=': conversion from 'long double' to 'float', possible loss of data
-C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src\main.cc(124,7): warning C4858: discarding return value: The result of 'std::async' should be stored in a variable. If the return value is discarded, the temporary 'std::future' is destroyed, waiting for an async result or evaluating a deferred result, thus defeating the purpose of 'std::async'.
+C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src\main.cc(77,22): warning C4244: '=': conversion from 'long double' to 'float', possible loss of data
+C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src\main.cc(125,7): warning C4858: discarding return value: The result of 'std::async' should be stored in a variable. If the return value is discarded, the temporary 'std::future' is destroyed, waiting for an async result or evaluating a deferred result, thus defeating the purpose of 'std::async'.
 C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\http_connection.h(473,63): warning C4244: 'argument': conversion from 'unsigned __int64' to 'int', possible loss of data
   (compiling source file 'main.cc')
   C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\http_connection.h(473,63):
   the template instantiation context (the oldest one first) is
-  	C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src\main.cc(30,17):
+  	C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src\main.cc(32,17):
   	see reference to class template instantiation 'crow::Crow<>' being compiled
   	C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\app.h(486,35):
   	see reference to class template instantiation 'std::unique_ptr<crow::Server<crow::Crow<>,crow::SocketAdaptor>,std::default_delete<crow::Server<crow::Crow<>,crow::SocketAdaptor>>>' being compiled

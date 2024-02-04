@@ -19,6 +19,8 @@
 
 #include <Windows.h>
 
+#define SAMPLE_RATE 44100
+#define FRAMES_PER_BUFFER 256
 
 using bsoncxx::builder::basic::kvp;
 using bsoncxx::builder::basic::make_array;
@@ -33,7 +35,10 @@ std::future<void> webRes{};
 PaStream* micStream{};
 float currentAudioLevel{0};
 
-bool gameActive = false;
+bool gameActive = true;
+bool dartImpact = false;
+
+std::vector<float> dartImpactArr{};
 
 
 
@@ -47,9 +52,6 @@ int endpoints()
 
 	return 0;
 }
-
-#define SAMPLE_RATE 44100
-#define FRAMES_PER_BUFFER 256
 
 int paCallback(const void* inputBuffer, void* outputBuffer,
 	unsigned long framesPerBuffer,
@@ -77,6 +79,8 @@ int paCallback(const void* inputBuffer, void* outputBuffer,
 	return paContinue;
 }
 
+
+
 int main(int argc, char* argv[])
 {
 	// Logging Setup
@@ -85,7 +89,6 @@ int main(int argc, char* argv[])
 	loguru::g_stderr_verbosity = 1;
 
 	LOG_F(INFO, "WELCOME to DARTS");
-	LOG_F(INFO, "Establishing connection to Darts DB...");
 
 	// Try establishing connection to mongodb, our DB & collection.
 	try {
@@ -104,7 +107,6 @@ int main(int argc, char* argv[])
 	}
 
 	LOG_F(INFO, "Established connection to Darts DB.");
-	LOG_F(INFO, "Establishing connection to Webserver...");
 
 	// Try creating our endpoints and running our async (non blocking) webserver.
 	try {
@@ -119,7 +121,6 @@ int main(int argc, char* argv[])
 	}
 
 	LOG_F(INFO, "Webserver running @ http://0.0.0.0:17777.");
-	LOG_F(INFO, "Starting Port Audio..");
 
 	std::async(std::launch::async, [&] {
 		try {
@@ -143,13 +144,30 @@ int main(int argc, char* argv[])
 	});
 
 	LOG_F(INFO, "Port Audio started.");
-	LOG_F(INFO, "Starting Main loop..");
+
+	// dart impact check loop
+	std::thread([] {
+		while (true) {
+			
+			if (currentAudioLevel >= -15) {
+				dartImpact = true;
+			}
+			else {
+				dartImpact = false;
+			}
+		}
+
+	}).detach();
+
+	LOG_F(INFO, "Dart Impact loop started.");
 
 	// main loop, non blocking.
 	std::thread([] {
 		while (true) {
-			if (!gameActive) return;
-			// dart landing check logic goes here
+			if (!gameActive) continue;
+			if (!dartImpact) continue;
+
+			LOG_F(WARNING, "IMPACT");
 
 			// detect dart logic goes here
 
@@ -157,7 +175,6 @@ int main(int argc, char* argv[])
 
 			// we go again
 			
-			std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		}
 	}).detach();
 
