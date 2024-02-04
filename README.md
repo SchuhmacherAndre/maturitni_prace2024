@@ -1,1 +1,1 @@
-vcpkg needed 4 mongodb c++ driver
+vcpkg needed 4 mongodb c++ driver, crowcpp and portaudio
