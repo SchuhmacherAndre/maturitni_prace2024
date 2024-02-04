@@ -1,4 +1,191 @@
 ﻿  main.cc
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\query_string.h(117,20): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\query_string.h(370,92): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\query_string.h(406,94): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\query_string.h(445,112): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\utility.h(672,39): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\http_parser_merged.h(589,32): warning C4244: '=': conversion from '__int64' to 'unsigned long', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\http_parser_merged.h(609,32): warning C4244: '=': conversion from '__int64' to 'unsigned long', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\json.h(1211,35): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\json.h(1671,32): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\mustache.h(97,33): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\mustache.h(116,48): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\mustache.h(118,53): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\mustache.h(118,53): warning C4267:         with
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\mustache.h(118,53): warning C4267:         [
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\mustache.h(118,53): warning C4267:             _Ty=int
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\mustache.h(118,53): warning C4267:         ]
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\mustache.h(221,94): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\mustache.h(367,54): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\mustache.h(378,54): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\mustache.h(390,54): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\mustache.h(401,54): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\mustache.h(463,60): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\mustache.h(563,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(800,70): warning C4244: 'argument': conversion from '__int64' to 'unsigned int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(821,70): warning C4244: 'argument': conversion from '__int64' to 'unsigned int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(842,70): warning C4244: 'argument': conversion from '__int64' to 'unsigned int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(864,61): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(880,61): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(895,61): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(945,53): warning C4267: '+=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(956,45): warning C4267: '+=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(1002,36): warning C4267: '+=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(1005,33): warning C4267: '+=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(1204,101): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(1204,87): warning C4267: 'argument': conversion from 'size_t' to 'uint16_t', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(1210,118): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(1259,100): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\routing.h(1420,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  
+C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src\main.cc(75,22): warning C4244: '=': conversion from 'long double' to 'float', possible loss of data
+C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src\main.cc(124,7): warning C4858: discarding return value: The result of 'std::async' should be stored in a variable. If the return value is discarded, the temporary 'std::future' is destroyed, waiting for an async result or evaluating a deferred result, thus defeating the purpose of 'std::async'.
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\http_connection.h(473,63): warning C4244: 'argument': conversion from 'unsigned __int64' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\http_connection.h(473,63):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src\main.cc(30,17):
+  	see reference to class template instantiation 'crow::Crow<>' being compiled
+  	C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\app.h(486,35):
+  	see reference to class template instantiation 'std::unique_ptr<crow::Server<crow::Crow<>,crow::SocketAdaptor>,std::default_delete<crow::Server<crow::Crow<>,crow::SocketAdaptor>>>' being compiled
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3205,66):
+  	see reference to class template instantiation 'std::default_delete<crow::Server<crow::Crow<>,crow::SocketAdaptor>>' being compiled
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3168,23):
+  	while compiling class template member function 'void std::default_delete<crow::Server<crow::Crow<>,crow::SocketAdaptor>>::operator ()(_Ty *) noexcept const'
+          with
+          [
+              _Ty=crow::Server<crow::Crow<>,crow::SocketAdaptor>
+          ]
+  		C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3280,33):
+  		see the first reference to 'std::default_delete<crow::Server<crow::Crow<>,crow::SocketAdaptor>>::operator ()' in 'std::unique_ptr<crow::Server<crow::Crow<>,crow::SocketAdaptor>,std::default_delete<crow::Server<crow::Crow<>,crow::SocketAdaptor>>>::~unique_ptr'
+  		C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\app.h(493,1):
+  		see the first reference to 'std::unique_ptr<crow::Server<crow::Crow<>,crow::SocketAdaptor>,std::default_delete<crow::Server<crow::Crow<>,crow::SocketAdaptor>>>::~unique_ptr' in 'crow::Crow<>::~Crow'
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3169,33):
+  	see reference to class template instantiation 'crow::Server<crow::Crow<>,crow::SocketAdaptor>' being compiled
+  	C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\http_server.h(194,14):
+  	while compiling class template member function 'void crow::Server<crow::Crow<>,crow::SocketAdaptor>::do_accept(void)'
+  		C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\http_server.h(152,22):
+  		see the first reference to 'crow::Server<crow::Crow<>,crow::SocketAdaptor>::do_accept' in 'crow::Server<crow::Crow<>,crow::SocketAdaptor>::run'
+  		C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\app.h(308,29):
+  		see the first reference to 'crow::Server<crow::Crow<>,crow::SocketAdaptor>::run' in 'crow::Crow<>::run'
+  		C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\app.h(316,26):
+  		see the first reference to 'crow::Crow<>::run' in 'crow::Crow<>::run_async::<lambda_1>::operator ()'
+  	C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\http_server.h(201,26):
+  	see reference to class template instantiation 'crow::Connection<Adaptor,Handler>' being compiled
+          with
+          [
+              Adaptor=crow::SocketAdaptor,
+              Handler=crow::Crow<>
+          ]
+  	C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\http_connection.h(463,14):
+  	while compiling class template member function 'void crow::Connection<Adaptor,Handler>::do_read(void)'
+          with
+          [
+              Adaptor=crow::SocketAdaptor,
+              Handler=crow::Crow<>
+          ]
+  		C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\http_connection.h(88,28):
+  		see the first reference to 'crow::Connection<Adaptor,Handler>::do_read' in 'crow::Connection<Adaptor,Handler>::start::<lambda_1>::operator ()'
+          with
+          [
+              Adaptor=crow::SocketAdaptor,
+              Handler=crow::Crow<>
+          ]
+  
+C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\parser.h(118,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cc')
+  C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\parser.h(118,25):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\http_connection.h(596,32):
+  	see reference to class template instantiation 'crow::HTTPParser<crow::Connection<Adaptor,Handler>>' being compiled
+          with
+          [
+              Adaptor=crow::SocketAdaptor,
+              Handler=crow::Crow<>
+          ]
+  	C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\parser.h(103,14):
+  	while compiling class template member function 'bool crow::HTTPParser<crow::Connection<Adaptor,Handler>>::feed(const char *,int)'
+          with
+          [
+              Adaptor=crow::SocketAdaptor,
+              Handler=crow::Crow<>
+          ]
+  		C:\Users\Administrator\Documents\vcpkg\installed\x64-windows\include\crow\http_connection.h(473,32):
+  		see the first reference to 'crow::HTTPParser<crow::Connection<Adaptor,Handler>>::feed' in 'crow::Connection<Adaptor,Handler>::do_read::<lambda_1>::operator ()'
+          with
+          [
+              Adaptor=crow::SocketAdaptor,
+              Handler=crow::Crow<>
+          ]
+  
+C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src\main.cc(144): warning C4715: '`main'::`2'::<lambda_1>::operator()': not all control paths return a value
   src.vcxproj -> C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src\dbg\darts.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.
