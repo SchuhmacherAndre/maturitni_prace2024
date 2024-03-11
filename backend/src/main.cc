@@ -63,15 +63,15 @@ int paCallback(const void* inputBuffer, void* outputBuffer,
 	float* input = (float*)inputBuffer;
 	long double power = 0.0;
 
-	// Calculate power of the audio signal
+	// calc power of audio signal
 	for (unsigned long i = 0; i < framesPerBuffer; i++) {
 		power += static_cast<long double>(input[i]) * static_cast<long double>(input[i]);
 	}
 
-	// Normalize the power by the number of samples
+	// normalization calculation
 	power /= framesPerBuffer;
 
-	// Convert power to decibels using log10l for long double precision
+	// power to decibel conversion
 	long double power_dB = 10 * log10l(power);
 
 	currentAudioLevel = power_dB;
