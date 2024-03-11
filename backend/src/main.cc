@@ -124,7 +124,7 @@ int main(int argc, char* argv[])
 
 	std::async(std::launch::async, [&] {
 		try {
-			freopen("null", "w", stderr); // little hack to disable output from portaudio.. pointless
+			freopen("null", "w", stderr); // little hack to disable output from portaudio..
 			Pa_Initialize();
 			Pa_OpenDefaultStream(&micStream,
 				1,         
