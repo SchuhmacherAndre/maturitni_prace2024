@@ -1,45 +1,60 @@
-#include <opencv2/opencv.hpp>
+#include <windows.media.capture.h>
+#include <wrl/client.h>
+#include <wrl/wrappers/corewrappers.h>
 #include <iostream>
-#include <Windows.h>
 
-int main(int argc, char** argv) {
-    // Check if the correct number of arguments is provided
-    if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <input_image_path>" << std::endl;
-        return 1;
+using namespace ABI::Windows::Media::Capture;
+using namespace Microsoft::WRL;
+
+int main() {
+    IActivationFactory* iaf;
+
+    // Initialize COM
+    HRESULT hr = CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED);
+    if (FAILED(hr)) {
+        std::cerr << "Error: COM initialization failed!" << std::endl;
+        return -1;
     }
 
-    std::cout << "predicting points.." << std::endl;
-
-    Sleep(4341);
-
-    if (strcmp(argv[1], "dartboard_2.jpg") == 0)
-    {
-        std::cout << "found 2 points";
-    }
-    else {
-        std::cout << "found 3 points";
+    // Create MediaCapture instance
+    ComPtr<IMediaCapture> mediaCapture;
+    hr = iaf->ActivateInstance(Microsoft::WRL::Wrappers::HStringReference::HStringReference(RuntimeClass_Windows_Media_Capture_MediaCapture).Get(), &mediaCapture);
+    if (FAILED(hr)) {
+        std::cerr << "Error: Failed to create MediaCapture instance!" << std::endl;
+        CoUninitialize();
+        return -1;
     }
 
-    Sleep(513);
-
-    // Load and display a different image saved on disk
-    cv::Mat differentImage = cv::imread("C:\\Users\\Administrator\\Desktop\\maturitni_prace2024\\tests\\src\\dart.png");
-    cv::Mat img2 = cv::imread("C:\\Users\\Administrator\\Desktop\\maturitni_prace2024\\tests\\src\\dart2.png");
-
-    if (strcmp(argv[1], "dartboard_2.jpg") == 0)
-    {
-        cv::namedWindow("prediction", cv::WINDOW_AUTOSIZE);
-        cv::imshow("prediction", img2);
-    }
-    else {
-        cv::namedWindow("prediction", cv::WINDOW_AUTOSIZE);
-        cv::imshow("prediction", differentImage);
+    // Initialize MediaCapture
+    hr = mediaCapture->InitializeAsync().get();
+    if (FAILED(hr)) {
+        std::cerr << "Error: Failed to initialize MediaCapture!" << std::endl;
+        CoUninitialize();
+        return -1;
     }
 
+    // Get VideoDeviceController
+    ComPtr<IVideoDeviceController> videoDeviceController;
+    hr = mediaCapture->VideoDeviceController(&videoDeviceController);
+    if (FAILED(hr)) {
+        std::cerr << "Error: Failed to get VideoDeviceController!" << std::endl;
+        CoUninitialize();
+        return -1;
+    }
 
-    // Wait for a key press before closing the windows
-    cv::waitKey(0);
+    // Set focus value (example value, may vary depending on the camera)
+    double focusValue = 0.5;
+    hr = videoDeviceController->SetFocusAsync(focusValue).get();
+    if (FAILED(hr)) {
+        std::cerr << "Error: Failed to set focus value!" << std::endl;
+        CoUninitialize();
+        return -1;
+    }
 
+    std::cout << "Focus set to " << focusValue << std::endl;
+
+    // Cleanup
+    mediaCapture->Close();
+    CoUninitialize();
     return 0;
 }
