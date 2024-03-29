@@ -17,8 +17,10 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-switch": "^1.0.3",
     "class-variance-authority": "^0.7.0",
-    "clsx": "^2.0.0",
+    "clsx": "^2.1.0",
+    "jquery": "^3.7.1",
     "lucide-react": "^0.288.0",
+    "mongodb": "^6.5.0",
     "next": "13.5.6",
     "next-themes": "^0.2.1",
     "react": "^18",
@@ -28,6 +30,7 @@
     "vaul": "^0.8.0"
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.29",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

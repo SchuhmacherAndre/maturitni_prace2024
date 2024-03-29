@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Picker with Zoom</title>
+    <style>
+        #container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #image {
+            width: 50%;
+            height: auto;
+        }
+
+        .circle {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 255, 0.3);
+            border: 2px solid blue;
+            cursor: pointer;
+        }
+
+        .circle::before,
+        .circle::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 1px;
+            background-color: blue;
+        }
+
+        .circle::before {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="image" src="iPhoneDartboard.jpg" alt="iPhone Dartboard">
+        <div id="circle1" class="circle"></div>
+        <div id="circle2" class="circle"></div>
+        <div id="circle3" class="circle"></div>
+        <div id="circle4" class="circle"></div>
+    </div>
+    <script>
+        const circles = document.querySelectorAll('.circle');
+        const image = document.getElementById('image');
+        const container = document.getElementById('container');
+
+        let initialX, initialY;
+        let isDragging = false;
+        let zoomed = false;
+        let zoomScale = 2;
+
+        container.addEventListener('mousedown', (event) => {
+            if (event.target.classList.contains('circle')) {
+                initialX = event.clientX;
+                initialY = event.clientY;
+                const circle = event.target;
+                isDragging = true;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            if (zoomed) {
+                container.style.transform = 'scale(1)';
+                zoomed = false;
+            }
+        });
+
+        container.addEventListener('mousemove', (event) => {
+            if (isDragging) {
+                const circle = event.target;
+                circle.style.left = event.clientX - initialX + 'px';
+                circle.style.top = event.clientY - initialY + 'px';
+
+                const rect = circle.getBoundingClientRect();
+                const imageX = event.clientX - rect.left;
+                const imageY = event.clientY - rect.top;
+
+                if (!zoomed && imageX > 0 && imageX < image.width && imageY > 0 && imageY < image.height) {
+                    container.style.transform = `scale(${zoomScale}) translate(-${imageX * (zoomScale - 1)}px, -${imageY * (zoomScale - 1)}px)`;
+                    zoomed = true;
+                    console.log(`X: ${imageX}, Y: ${imageY}`);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

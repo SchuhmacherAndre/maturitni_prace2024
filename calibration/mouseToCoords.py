@@ -27,7 +27,7 @@ def click_event(event, x, y, flags, params):
 if __name__=="__main__":
  
     # reading the image
-    img = cv2.imread('calibrated.jpg', 1)
+    img = cv2.imread('iPhoneDartboard.jpg', 1)
     # displaying the image
 
     cv2.namedWindow("image", cv2.WINDOW_NORMAL) 

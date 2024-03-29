@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Picker</title>
+<style>
+    #container {
+        position: relative;
+        width: 1200px; /* adjust according to your image */
+        height: 800px; /* adjust according to your image */
+    }
+    #imageCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .crosshair {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        cursor: move;
+        background-color: rgba(255, 0, 0, 0.5); /* for visibility */
+    }
+    .crosshair::after {
+        content: "+";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+</head>
+<body>
+
+<div id="container">
+    <canvas id="imageCanvas" width="1200" height="800"></canvas>
+    <div class="crosshair" id="crosshair1"></div>
+    <div class="crosshair" id="crosshair2"></div>
+    <div class="crosshair" id="crosshair3"></div>
+    <div class="crosshair" id="crosshair4"></div>
+</div>
+
+<script>
+    const crosshairs = document.querySelectorAll('.crosshair');
+    const imageCanvas = document.getElementById('imageCanvas');
+    const ctx = imageCanvas.getContext('2d');
+    const image = new Image();
+    image.src = 'iPhoneDartboard.jpg'; // Adjust the image path accordingly
+
+    image.onload = function() {
+        imageCanvas.width = 1200;
+        imageCanvas.height = 800;
+        ctx.drawImage(image, 0, 0, imageCanvas.width, imageCanvas.height);
+
+        // Position crosshairs over the canvas
+        crosshairs.forEach(crosshair => {
+            crosshair.style.left = `${imageCanvas.offsetLeft}px`;
+            crosshair.style.top = `${imageCanvas.offsetTop}px`;
+        });
+    };
+
+    let zoomFactor = 2; // adjust zoom factor as needed
+
+    crosshairs.forEach(crosshair => {
+        crosshair.addEventListener('mousedown', startDragging);
+    });
+
+    function startDragging(e) {
+        const crosshair = e.target;
+        const rect = crosshair.getBoundingClientRect();
+        const offsetX = e.clientX - rect.left;
+        const offsetY = e.clientY - rect.top;
+
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', stopDragging);
+
+        function drag(e) {
+            const x = e.clientX - offsetX;
+            const y = e.clientY - offsetY;
+
+            // Limiting crosshair movement within the container
+            const maxX = imageCanvas.width - rect.width;
+            const maxY = imageCanvas.height - rect.height;
+
+            crosshair.style.left = `${Math.min(maxX, Math.max(0, x))}px`;
+            crosshair.style.top = `${Math.min(maxY, Math.max(0, y))}px`;
+
+            zoomImage();
+        }
+
+        function stopDragging() {
+            document.removeEventListener('mousemove', drag);
+            document.removeEventListener('mouseup', stopDragging);
+        }
+    }
+
+    function zoomImage() {
+        const scaleX = image.width / imageCanvas.offsetWidth;
+        const scaleY = image.height / imageCanvas.offsetHeight;
+    
+        ctx.clearRect(0, 0, imageCanvas.width, imageCanvas.height);
+        ctx.drawImage(image, 0, 0, imageCanvas.width, imageCanvas.height);
+    
+        crosshairs.forEach(crosshair => {
+            const rect = crosshair.getBoundingClientRect();
+            const x = (rect.left - imageCanvas.offsetLeft) * scaleX;
+            const y = (rect.top - imageCanvas.offsetTop) * scaleY;
+            const centerX = x + rect.width / 2;
+            const centerY = y + rect.height / 2;
+            const radiusX = rect.width / 2 * zoomFactor;
+            const radiusY = rect.height / 2 * zoomFactor;
+    
+            const xOffset = (1 - zoomFactor) * rect.width / 2;
+            const yOffset = (1 - zoomFactor) * rect.height / 2;
+    
+            ctx.save();
+            ctx.beginPath();
+            ctx.ellipse(centerX, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
+            ctx.clip();
+            ctx.drawImage(image, x - xOffset, y - yOffset, rect.width * scaleX * zoomFactor, rect.height * scaleY * zoomFactor, rect.left - xOffset, rect.top - yOffset, rect.width * zoomFactor, rect.height * zoomFactor);
+            ctx.restore();
+        });
+    }
+    
+    
+    
+</script>
+
+</body>
+</html>

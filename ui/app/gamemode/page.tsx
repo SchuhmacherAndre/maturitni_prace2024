@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { ModeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
@@ -36,6 +36,7 @@ export default function Picker() {
   };
 
   const [selectedButtons, setSelectedButtons] = useState<number[]>([]);
+  const [selectedButtons2, setSelectedButtons2] = useState<number[]>([]);
 
   const handleButtonClick = (buttonNumber: number) => {
     setSelectedButtons((prevSelected) => {
@@ -52,6 +53,23 @@ export default function Picker() {
 
   const isButtonSelected = (buttonNumber: number) => {
     return selectedButtons.includes(buttonNumber);
+  };
+
+  const handleButtonClick2 = (buttonNumber: number) => {
+    setSelectedButtons2((prevSelected) => {
+      if (prevSelected.includes(buttonNumber)) {
+        // Button is already selected, so deselect it
+        return prevSelected.filter((selected) => selected !== buttonNumber);
+      } else {
+        // Button is not selected, so select it
+        return [buttonNumber];
+      }
+    });
+    // Add any other logic you need when a button is clicked
+  };
+
+  const isButtonSelected2 = (buttonNumber: number) => {
+    return selectedButtons2.includes(buttonNumber);
   };
 
   return (
@@ -79,6 +97,7 @@ export default function Picker() {
                 <div className="flex items-center justify-center space-x-2">
                   <div className="flex-1 text-center">
                     <div className="flex justify-center items-center space-x-2  ">
+                    <a>Max Point amount:</a>
                       <Button
                         variant={isButtonSelected(1) ? "secondary" : "outline"}
                         onClick={() => handleButtonClick(1)}
@@ -98,6 +117,34 @@ export default function Picker() {
                         101
                       </Button>
                     </div>
+                    <a>    &zwnj; </a>
+                    <div className="flex justify-center items-center space-x-2">
+                      <a>Amount of players:</a>
+                      <Button
+                          variant={isButtonSelected2(4) ? "secondary" : "outline"}
+                          onClick={() => handleButtonClick2(4)}
+                        >
+                          1
+                        </Button>
+                        <Button
+                          variant={isButtonSelected2(5) ? "secondary" : "outline"}
+                          onClick={() => handleButtonClick2(5)}
+                        >
+                          2
+                        </Button>
+                        <Button
+                          variant={isButtonSelected2(6) ? "secondary" : "outline"}
+                          onClick={() => handleButtonClick2(6)}
+                        >
+                          3
+                        </Button>
+                        <Button
+                          variant={isButtonSelected2(7) ? "secondary" : "outline"}
+                          onClick={() => handleButtonClick2(7)}
+                        >
+                          4
+                        </Button>
+                      </div>
                   </div>
 
                   <div className=" mb-24"></div>
@@ -117,7 +164,7 @@ export default function Picker() {
                       <ExclamationTriangleIcon className="h-4 w-4" />
                       <AlertTitle>Error</AlertTitle>
                       <AlertDescription>
-                        The camera hasn't been calibrated, please calibrate in
+                        The camera hasn&apos;t been calibrated, please calibrate in
                         settings.
                       </AlertDescription>
                     </Alert>

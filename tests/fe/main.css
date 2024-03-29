@@ -1,0 +1,48 @@
+.iz {
+    position: relative;
+    display: block;
+    margin: 0;
+    cursor: crosshair;
+    touch-action: none;
+  }
+  .iz:hover {
+    overflow: visible;
+  }
+  .iz:hover .iz__zoom {
+    opacity: 1;
+  }
+  .iz:hover .iz__zoom-pic {
+    will-change: margin-top, margin-right, margin-bottom, margin-left;
+    transform: translate3d(0, 0, 0);
+    background: #eee;
+  }
+  .iz__zoom {
+    position: absolute;
+    z-index: 1;
+    top: 0 !important;
+    margin-left: 10px;
+    opacity: 0;
+    background: #ddd;
+    transition: opacity 0.4s;
+    /*set dimensions of zoom-window */
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .iz__zoom-pic {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    will-change: auto;
+  }
+  
+  .global {
+    font: 0.9em/1.4 sans-serif;
+    color: #efefef;
+  }
+  .global body {
+    padding: 40px 20px;
+    background: #26282c;
+  }

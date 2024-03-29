@@ -1,5 +1,5 @@
 import math
-center = (2045, 1520)
+center = (1907, 1565)
 
 #returns distance between two points
 
@@ -7,8 +7,6 @@ def cart_to_polar(point):
     distance = math.dist(center, point)
     angle = math.atan2((center[1] - point[1]),(center[0] - point[0]))
     angle = abs(math.degrees(angle) - 180)
-    #print(angle)
-    #print(distance, angle)
     return(distance, angle)
 
 def angle_to_score(angle):
@@ -74,9 +72,7 @@ def angle_to_score(angle):
         return score
     return score
 
-#takes in a point, outputs (ring, score)
 def get_score(point):
-
     polar = cart_to_polar(point)
     print(polar)
     dist = polar[0]
@@ -88,27 +84,28 @@ def get_score(point):
         score =  50
         return(ring, score)
     
-    if(44<dist<=81):
+    if(44<dist<=110):
         ring = "be_25"
         score = 25
         return(ring, score)
 
-    if(62<dist<=563):
+    if(111<dist<=627):
         ring = "single_1"
         score = wedge
         return(ring, score)
+    ...
     
-    if(563<dist<=625):
+    if(628<dist<=693):
         ring = "triple"
         score = wedge * 3
 
         return(ring, score)
-    if(625<dist<=937):
+    if(699<dist<=1042):
         ring = "single_2"
         score = wedge
         return(ring, score)
     
-    if(960<dist<=1010):
+    if(1043<dist<=1107):
         ring = "double"
         score = wedge * 2
         return(ring, score)
@@ -118,5 +115,3 @@ def get_score(point):
 def score_to_text(score):
     print(f"score = {score[1]}")   
     print(f"ring = {score[0]}")     
-
-score_to_text(get_score((2056, 1550)))

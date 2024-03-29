@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Magnifier Glass</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        canvas {
+            border: 1px solid black;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="magnifier"></canvas>
+    <script>
+        const canvas = document.getElementById('magnifier');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        img.src = 'iPhoneDartboard.jpg'; // Replace with your image URL
+
+        let magnifiers = [];
+        const magnifierSize = 100;
+        const zoomLevel = 2;
+
+        img.onload = function () {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+
+            canvas.addEventListener('mousemove', drawMagnifiers);
+            canvas.addEventListener('click', addMagnifier);
+        }
+
+        function addMagnifier(e) {
+            if (magnifiers.length < 4) {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                magnifiers.push({ x, y });
+            }
+        }
+
+        function drawMagnifiers(e) {
+            ctx.drawImage(img, 0, 0);
+
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            magnifiers.forEach(magnifier => {
+                drawMagnifier(magnifier.x, magnifier.y, mouseX, mouseY);
+                console.log(`Magnifier center: (${magnifier.x}, ${magnifier.y})`);
+            });
+        }
+
+        function drawMagnifier(x, y, mouseX, mouseY) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(x, y, magnifierSize / 2, 0, Math.PI * 2);
+            ctx.clip();
+
+            const zoomX = x - (mouseX - x) / zoomLevel;
+            const zoomY = y - (mouseY - y) / zoomLevel;
+            ctx.drawImage(img, zoomX, zoomY, img.width / zoomLevel, img.height / zoomLevel, x - magnifierSize / 2, y - magnifierSize / 2, magnifierSize, magnifierSize);
+
+            ctx.restore();
+        }
+    </script>
+</body>
+</html>

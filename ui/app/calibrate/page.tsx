@@ -3,118 +3,160 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
+import $ from "jquery"
 
-interface Dot {
-  id: number;
-  x: number;
-  y: number;
-  isDragging: boolean;
-}
 
 export default function Calibrate() {
-  const [dots, setDots] = useState<Dot[]>([
-    { id: 1, x: 100, y: 100, isDragging: false },
-    { id: 2, x: 200, y: 100, isDragging: false },
-    { id: 3, x: 100, y: 200, isDragging: false },
-    { id: 4, x: 200, y: 200, isDragging: false },
-  ]);
-
-  const calculateDartboardRadius = (): number => {
-    const distances = dots.map((dot) =>
-      Math.sqrt((dot.x - 200) ** 2 + (dot.y - 200) ** 2)
-    );
-    const maxDistance = Math.max(...distances);
-    return maxDistance + 20; // Add some padding
-  };
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      const updatedDots = dots.map((dot) =>
-        dot.isDragging ? { ...dot, x: event.pageX, y: event.pageY } : dot
-      );
-      setDots(updatedDots);
-    };
+    let isDragging = false;
+    let currentCrosshair: JQuery<HTMLElement>;
+    let zoom = 3;
+    var img, glass, w: any, h: any, bw: any;
+    var imag = document.getElementById("myimage")!;
+    
 
-    const handleMouseUp = () => {
-      const updatedDots = dots.map((dot) => ({ ...dot, isDragging: false }));
-      setDots(updatedDots);
-    };
+    for (let i = 1; i < 5; i++) {
+      glass = document.getElementById("glass"+i)!;
+      /* Set background properties for the magnifier glass: */
+      glass.style.backgroundImage = "url('" + "/IMG_0001.jpg" + "')";
+      glass.style.backgroundRepeat = "no-repeat";
+      glass.style.backgroundSize = (imag.clientWidth * zoom) + "px " + (imag.clientHeight * zoom) + "px";
+      bw = 3;
+      w = glass.offsetWidth / 2;
+      h = glass.offsetHeight / 2;
+    }
 
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
+    $(".img-magnifier-glass").on("mousedown touchstart", function(e: any) {
+      isDragging = true;
+      currentCrosshair = $(this) as JQuery<HTMLElement>;
 
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
-    };
-  }, [dots]);
+      e.preventDefault(); // Prevent default touch behavior
+    });
 
-  const handleMouseDown = (id: number) => {
-    const updatedDots = dots.map((dot) =>
-      dot.id === id ? { ...dot, isDragging: true } : dot
-    );
-    setDots(updatedDots);
-  };
+    $(document).on("mousemove touchmove", function(e: any) {
+      if (isDragging) {
+          let containerOffset = $(".img-magnifier-container").offset()!;
+
+          let test = $("#myimage").offset()!;
+          let clientX, clientY;
+
+          if (e.type === "touchmove") {
+              clientX = e.originalEvent.touches[0].clientX;
+              clientY = e.originalEvent.touches[0].clientY;
+          } else {
+              clientX = e.clientX;
+              clientY = e.clientY;
+          }
+          
+          let xPos = clientX - test.left - 50; // Adjust for crosshair size
+          let yPos = clientY -  containerOffset.top - 50; // Adjust for crosshair size
+
+ 
+          currentCrosshair.css({ left: xPos, top: yPos });
+
+
+          var pos, x, y;
+          /* Prevent any other actions that may occur when moving over the image */
+          e.preventDefault();
+                /* Get the cursor's x and y positions: */
+           x = clientX - test.left - 41; // Adjust for crosshair size
+           y = clientY -  test.top - 25; 
+
+          /* Prevent the magnifier glass from being positioned outside the image: */
+          currentCrosshair.css({
+            backgroundPosition: "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw)  + "px"
+        });
+      }
+    });
+
+    $(document).on("mouseup touchend", function(e: any) {
+        if (isDragging) {
+            let img = document.getElementById("myimage") as HTMLImageElement;
+            let containerOffset = $(".img-magnifier-container").offset();
+            let clientX, clientY;
+            if (e.type === "touchend") {
+                clientX = e.originalEvent.changedTouches[0].clientX;
+                clientY = e.originalEvent.changedTouches[0].clientY;
+            } else {
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+            let xPos = ((clientX - 25) - img.offsetLeft) * (img.naturalWidth / img.width);
+            let yPos = ((clientY - 25) - img.offsetTop) * (img.naturalHeight / img.height);
+            console.log("Image Coordinates: " + currentCrosshair.attr("id"), { x: xPos - 120, y: yPos });
+            isDragging = false;
+        }
+    }); 
+
+  }, []);
+    
+
+
 
   return (
     <div className="overflow-x-hidden overflow-y-auto">
       <div className="flex justify-center items-center space-x-4 h-screen">
-        <Button asChild variant="outline" className="h-64">
-          <Link href="/settings">Back</Link>
-        </Button>
-        <svg width="400" height="400" style={{ border: "1px solid #ccc" }}>
-          {/* Draw Dartboard Circles */}
-          <circle
-            cx="200"
-            cy="200"
-            r={calculateDartboardRadius()}
-            fill="white"
-          />
-          <circle
-            cx="200"
-            cy="200"
-            r={calculateDartboardRadius() / 1.5}
-            fill="#ffcc00"
-          />
-          <circle
-            cx="200"
-            cy="200"
-            r={calculateDartboardRadius() / 2.5}
-            fill="#009933"
-          />
+      <Button asChild variant="outline" className="h-64">
+                <Link href="/settings">Back</Link>
+            </Button>
 
-          {/* Draw Dartboard Sections */}
-          {[0, 1, 2, 3].map((quadrant) => (
-            <line
-              key={quadrant}
-              x1="200"
-              y1="200"
-              x2={
-                200 +
-                calculateDartboardRadius() * Math.cos((quadrant * Math.PI) / 2)
-              }
-              y2={
-                200 +
-                calculateDartboardRadius() * Math.sin((quadrant * Math.PI) / 2)
-              }
-              stroke="#000"
-            />
-          ))}
+        <div className="img-magnifier-container">
+          <div className="img-magnifier-glass left-72 top-96" id="glass4"><a className="cross font-light">+</a><div className="floating-word">Fourth</div></div>
+          <div className="img-magnifier-glass left-48 top-96" id="glass3"><a className="cross font-light">+</a><div className="floating-word">Third</div></div>
+          <div className="img-magnifier-glass left-24 top-96" id="glass2"><a className="cross font-light">+</a><div className="floating-word">Second</div></div>
+          <div className="img-magnifier-glass top-96" id="glass1"><a className="cross font-light">+</a><div className="floating-word">First</div></div>
+        </div>
+          
+          
 
-          {/* Draw Dots */}
-          {dots.map((dot) => (
-            <circle
-              key={dot.id}
-              cx={dot.x}
-              cy={dot.y}
-              r={10}
-              fill="blue"
-              onMouseDown={() => handleMouseDown(dot.id)}
-              style={{ cursor: "pointer" }}
-            />
-          ))}
-        </svg>
+
+        <img className="rounded-xl" id="myimage" src="/IMG_0001.jpg" style={{ width: '50%' }} alt="dartboard"></img>
+
+
+
+
       </div>
+      <style jsx>{`
+        * {box-sizing: border-box;}
+
+        .img-magnifier-container {
+          position: relative;
+        }
+
+        .img-magnifier-glass {
+          position: absolute;
+          border: 3px solid #000;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center; /* horizontally center */
+          align-items: center; /* vertically center */
+          cursor: crosshair;
+          /* Set the size of the magnifier glass: */
+          width: 50px;
+          height: 50px;
+        }
+
+        .cross {
+            cursor: crosshair;
+            font-size: 36px; /* Adjust font size as needed */
+            color: cyan;
+            
+        }
+
+        .floating-word {
+          position: absolute;
+          top: -30px; /* Adjust top position */
+          left: 50%; /* Adjust left position */
+          transform: translateX(-50%); /* Center horizontally */
+          font-size: 32px; /* Adjust font size as needed */
+          color: white; /* Adjust color as needed */
+        }
+
+
+      `}</style>
     </div>
+
   );
 }

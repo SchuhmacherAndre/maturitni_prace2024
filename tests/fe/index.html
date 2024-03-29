@@ -1,0 +1,147 @@
+<style>
+    * {box-sizing: border-box;}
+
+    .img-magnifier-container {
+      position: relative;
+    }
+    
+    .img-magnifier-glass {
+      position: absolute;
+      border: 3px solid #000;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center; /* horizontally center */
+      align-items: center; /* vertically center */
+      cursor: crosshair;
+      /* Set the size of the magnifier glass: */
+      width: 100px;
+      height: 100px;
+    }
+    
+    .cross {
+        cursor: crosshair;
+        font-size: 64px; /* Adjust font size as needed */
+        color: cyan;
+    }
+    
+    .floating-word {
+      position: absolute;
+      top: -30px; /* Adjust top position */
+      left: 50%; /* Adjust left position */
+      transform: translateX(-50%); /* Center horizontally */
+      font-size: 32px; /* Adjust font size as needed */
+      color: cyan; /* Adjust color as needed */
+    }
+
+
+</style>
+
+<body>
+
+    <div class="img-magnifier-container">
+        <div class="img-magnifier-glass" id="glass4"><a class="cross">+</a><div class="floating-word">Fourth</div></div>
+        <div class="img-magnifier-glass" id="glass3"><a class="cross">+</a><div class="floating-word">Third</div></div>
+
+        <div class="img-magnifier-glass" id="glass2"><a class="cross">+</a><div class="floating-word">Second</div></div>
+        <div class="img-magnifier-glass" id="glass1">
+            <a class="cross">+</a>
+            <div class="floating-word">First</div>
+        </div>
+        </div>
+        
+        
+
+
+        <img id="myimage" src="iPhoneDartboard.jpg" width="600" height="400" alt="dartboard">
+    </div>
+
+    <img id="myimage" src="howTo.jpg" width="600" height="400" alt="dartboard">
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        let isDragging = false;
+        let currentCrosshair = null;
+        let zoom = 5;
+        var img, glass, w, h, bw;
+        img = document.getElementById("myimage");
+
+        for (let i = 1; i < 5; i++) {
+            glass = document.getElementById("glass"+i);
+            /* Set background properties for the magnifier glass: */
+            glass.style.backgroundImage = "url('" + img.src + "')";
+            glass.style.backgroundRepeat = "no-repeat";
+            glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+            bw = 3;
+            w = glass.offsetWidth / 2;
+            h = glass.offsetHeight / 2;
+        }
+
+        $(".img-magnifier-glass").on("mousedown touchstart", function(e) {
+            isDragging = true;
+            currentCrosshair = $(this);
+            e.preventDefault(); // Prevent default touch behavior
+        });
+
+        $(document).on("mousemove touchmove", function(e) {
+            if (isDragging) {
+                let containerOffset = $(".img-magnifier-container").offset();
+                let clientX, clientY;
+
+                if (e.type === "touchmove") {
+                    clientX = e.originalEvent.touches[0].clientX;
+                    clientY = e.originalEvent.touches[0].clientY;
+                } else {
+                    clientX = e.clientX;
+                    clientY = e.clientY;
+                }
+
+                let xPos = clientX - containerOffset.left - 100; // Adjust for crosshair size
+                let yPos = clientY - containerOffset.top - 100; // Adjust for crosshair size
+                currentCrosshair.css({ left: xPos, top: yPos });
+
+                var pos, x, y;
+                /* Prevent any other actions that may occur when moving over the image */
+                e.preventDefault();
+                /* Get the cursor's x and y positions: */
+                x = xPos + 50;
+                y = yPos + 50;
+                /* Prevent the magnifier glass from being positioned outside the image: */
+
+
+                currentCrosshair.css({
+                    backgroundPosition: "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px"
+                });
+            }
+        });
+
+        $(document).on("mouseup touchend", function(e) {
+            if (isDragging) {
+                let img = $("#myimage");
+                let imgOffset = img.offset();
+                let imgWidth = img.width();
+                let imgHeight = img.height();
+                let containerOffset = $(".img-magnifier-container").offset();
+                let clientX, clientY;
+
+                if (e.type === "touchend") {
+                    clientX = e.originalEvent.changedTouches[0].clientX;
+                    clientY = e.originalEvent.changedTouches[0].clientY;
+                } else {
+                    clientX = e.clientX;
+                    clientY = e.clientY;
+                }
+
+                let xPos = ((clientX - 50) - imgOffset.left) * (img[0].naturalWidth / imgWidth);
+                let yPos = ((clientY - 50) - imgOffset.top) * (img[0].naturalHeight / imgHeight);
+                console.log("Image Coordinates: " + currentCrosshair.attr("id"), { x: xPos, y: yPos });
+
+                isDragging = false;
+                currentCrosshair = null;
+            }
+        }); 
+
+    });
+</script>

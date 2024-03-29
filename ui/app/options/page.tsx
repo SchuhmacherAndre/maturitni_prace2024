@@ -35,13 +35,13 @@ export default function Options() {
               <div className="grid w-full items-center gap-4">
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="name">PLACEHOLDER</Label>
-                  <Input id="name" placeholder="Name of your project" />
+                  <Input id="name" placeholder="PLACEHOLDER" />
                 </div>
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="framework">PLACEHOLDER</Label>
                   <Select>
                     <SelectTrigger id="framework">
-                      <SelectValue placeholder="Select" />
+                      <SelectValue placeholder="PLACEHOLDER" />
                     </SelectTrigger>
                     <SelectContent position="popper">
                       <SelectItem value="next">Next.js</SelectItem>
@@ -55,8 +55,8 @@ export default function Options() {
             </form>
           </CardContent>
           <CardFooter className="flex justify-between">
-            <Button variant="outline">Cancel</Button>
-            <Button>Deploy</Button>
+            <Button variant="outline">PLACEHOLDER</Button>
+            <Button>PLACEHOLDER</Button>
           </CardFooter>
         </Card>
       </div>
