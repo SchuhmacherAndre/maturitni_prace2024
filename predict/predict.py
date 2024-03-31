@@ -5,34 +5,31 @@ import numpy as np
 import pointToScore
 import sys
 
-def open_image(file_name):
-    try:
-        im = Image.open(file_name) 
-        return im
-    except FileNotFoundError:
-        print("File not found.")
-        return None
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return None
+cam = cv2.VideoCapture(0)
+cam.set(cv2.CAP_PROP_AUTOFOCUS, 0)
+cam.set(cv2.CAP_PROP_FRAME_WIDTH, 3264)
+cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 2448)
+cam.set(cv2.CAP_PROP_FOCUS, 225)
 
-if len(sys.argv) != 2:
-    print("Usage: python predict.py <image_file>")
-    exit()
-else:
-    image_file = sys.argv[1]
-    im1 = open_image(image_file)
+count = 0
+
+while True:
+    count += 1
+    ret, frame = cam.read()
+    f2 = cv2.resize(frame, (1280, 720))
+    cam.set(cv2.CAP_PROP_FOCUS, 225)
+
+    if count == 25:
+        cv2.imwrite("img.jpg", frame)
+        break
+
+im1 = Image.open("img.jpg") 
 
 
 model = YOLO("best.pt") 
 results = model.predict(source=im1, save=True, conf=0.4)
 
-data = []
-classes = []
 
-for result in results:
-    data = result.boxes.xyxy.numpy()
-    classes = result.boxes.cls.numpy()
 
 def calculate_overlap(box1, box2):
     # Calculate intersection coordinates
@@ -110,7 +107,7 @@ def find_closest_points(bounding_boxes, dart_tip_pairs):
 def get_transformed_point(point):
    
     board_points = np.array([(1095.36, 2358.72), (1122.24, 763.56), (2701.44, 793.8), (2681.2799999999997, 2366.2799999999997)], dtype=np.float32)
-    cam_points = np.array([(1728.0836236933799, 39.75870069605568), (2700.459930313589, 1306.3573085846867), (1352.7804878048782, 2430.9605568445477), (226.87108013937285, 761.0951276102088)], dtype=np.float32)
+    cam_points = np.array([(1482, 72), (2550, 1194), (1362, 2427), (69, 918)], dtype=np.float32)
     cam_to_board = cv2.getPerspectiveTransform(cam_points, board_points)
     warp = cam_to_board
         
@@ -122,6 +119,10 @@ def get_transformed_point(point):
     point = (pt_x, pt_y)
 
     return point
+
+data = []
+classes = []
+
 
 
 dart_tip_pairs = find_dart_tip_pairs(data, classes, min_overlap=0.9)

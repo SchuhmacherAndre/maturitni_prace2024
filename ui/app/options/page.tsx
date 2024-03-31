@@ -24,7 +24,7 @@ export default function Options() {
     <div className="overflow-x-hidden overflow-y-auto">
       <div className="flex justify-center items-center space-x-4 h-screen">
         <Button asChild variant="outline" className=" h-72">
-          <Link href="/">Back</Link>
+          <Link href="/settings">Back</Link>
         </Button>
         <Card className="w-[350px]">
           <CardHeader>

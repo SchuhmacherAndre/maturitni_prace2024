@@ -48,7 +48,7 @@ def select_points(image):
     # close the window
     cv2.destroyAllWindows()
 
-img = cv2.imread('IMG_0004.jpg', 1)
+img = cv2.imread('img.jpg', 1)
 
 select_points(img)
 cam_points = points
@@ -57,6 +57,8 @@ reset_values()
 board_points = np.array([(1095.36, 2358.72), (1122.24, 763.56), (2701.44, 793.8), (2681.2799999999997, 2366.2799999999997)], dtype=np.float32)
 cam_points = np.array([cam_points[0], cam_points[1], cam_points[2],cam_points[3]], dtype=np.float32)
 
+print(cam_points[0], cam_points[1], cam_points[2],cam_points[3])
+print("XD")
 cam_to_board = cv2.getPerspectiveTransform(cam_points, board_points)
 print(cam_to_board)
 

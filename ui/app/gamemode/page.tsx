@@ -171,7 +171,9 @@ export default function Picker() {
                   )}
                 </div>
 
-                <Button onClick={showAlert}>Play</Button>
+                <Button asChild>
+                  <Link href="/game">Play</Link>
+                </Button>
                 <DrawerClose asChild>
                   <Button variant="outline" onClick={hideAlert}>
                     Cancel

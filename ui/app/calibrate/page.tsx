@@ -61,7 +61,7 @@ export default function Calibrate() {
           /* Prevent any other actions that may occur when moving over the image */
           e.preventDefault();
                 /* Get the cursor's x and y positions: */
-           x = clientX - test.left - 41; // Adjust for crosshair size
+           x = clientX - test.left - 40; // Adjust for crosshair size
            y = clientY -  test.top - 25; 
 
           /* Prevent the magnifier glass from being positioned outside the image: */
@@ -85,7 +85,7 @@ export default function Calibrate() {
             }
             let xPos = ((clientX - 25) - img.offsetLeft) * (img.naturalWidth / img.width);
             let yPos = ((clientY - 25) - img.offsetTop) * (img.naturalHeight / img.height);
-            console.log("Image Coordinates: " + currentCrosshair.attr("id"), { x: xPos - 120, y: yPos });
+            console.log("Image Coordinates: " + currentCrosshair.attr("id"), { x: xPos + 30, y: yPos });
             isDragging = false;
         }
     }); 
@@ -112,7 +112,7 @@ export default function Calibrate() {
           
 
 
-        <img className="rounded-xl" id="myimage" src="/IMG_0001.jpg" style={{ width: '50%' }} alt="dartboard"></img>
+        <img className="" id="myimage" src="/IMG_0001.jpg" style={{ width: '50%' }} alt="dartboard"></img>
 
 
 

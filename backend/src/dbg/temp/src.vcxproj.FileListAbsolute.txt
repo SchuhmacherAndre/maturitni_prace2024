@@ -5,3 +5,10 @@ C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src\dbg\mong
 C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src\dbg\mongoc-1.0.dll
 C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src\dbg\zlibd1.dll
 C:\Users\Administrator\Documents\GitHub\maturitni_prace2024\backend\src\dbg\portaudio.dll
+H:\maturitni_prace2024\backend\src\dbg\temp\src.vcxproj.Up2Date
+H:\maturitni_prace2024\backend\src\dbg\mongocxx-v_noabi-dhs-mdd.dll
+H:\maturitni_prace2024\backend\src\dbg\mongoc-1.0.dll
+H:\maturitni_prace2024\backend\src\dbg\zlibd1.dll
+H:\maturitni_prace2024\backend\src\dbg\bson-1.0.dll
+H:\maturitni_prace2024\backend\src\dbg\bsoncxx-v_noabi-dhs-mdd.dll
+H:\maturitni_prace2024\backend\src\dbg\portaudio.dll

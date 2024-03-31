@@ -1,11 +1,15 @@
 #define _CRT_SECURE_NO_WARNINGS
 
+#include <print>
 #include <cstdint>
 #include <iostream>
 #include <vector>
 #include <cassert>
 #include <future>
+#include <string>
+#include <sstream>
 
+#include <zmq.hpp>
 #include <loguru.hpp>
 #include <loguru.cpp>
 #include <crow.h>
@@ -16,6 +20,7 @@
 #include <mongocxx/stdx.hpp>
 #include <mongocxx/uri.hpp>
 #include <portaudio.h>
+
 
 #include <Windows.h>
 
@@ -37,6 +42,7 @@ float currentAudioLevel{0};
 
 bool gameActive = true;
 bool dartImpact = false;
+bool go = true;
 
 std::vector<float> dartImpactArr{};
 
@@ -79,6 +85,43 @@ int paCallback(const void* inputBuffer, void* outputBuffer,
 	return paContinue;
 }
 
+std::string removeFirstXLines(const std::string& input, int x) {
+	size_t pos = 0;
+	for (int i = 0; i < x; ++i) {
+		pos = input.find('\n', pos);
+		if (pos == std::string::npos) // Less than x lines
+			return "";
+		++pos; // Move past the newline character
+	}
+	return input.substr(pos);
+}
+
+std::string getPoints()
+{
+	// invoke python script
+	LOG_F(INFO, "trying to invoke script..");
+	FILE* pipe = _popen("python pred2.py", "r");
+	if (!pipe) {
+		std::cerr << "Error: Couldn't invoke getPoints script." << std::endl;
+		return "NULL";
+	}
+	// Buffer to store the output of the Python script
+	constexpr int MAX_BUFFER = 1024;
+	char buffer[MAX_BUFFER];
+
+	// Read output from the Python script
+	std::string output;
+	while (!feof(pipe)) {
+		if (fgets(buffer, MAX_BUFFER, pipe) != nullptr) 
+			output += buffer;
+		
+	}
+	// Close the pipe
+	_pclose(pipe);
+	
+
+	return output;
+}
 
 
 int main(int argc, char* argv[])
@@ -91,22 +134,22 @@ int main(int argc, char* argv[])
 	LOG_F(INFO, "WELCOME to DARTS");
 
 	// Try establishing connection to mongodb, our DB & collection.
-	try {
-		mongocxx::instance instance{};
-		mongocxx::client client{ mongocxx::uri{} };
+	//try {
+	//	mongocxx::instance instance{};
+	//	mongocxx::client client{ mongocxx::uri{} };
 
-		// exception... if not running.. lol
-		client.list_databases().begin();
+	//	// exception... if not running.. lol
+	//	client.list_databases().begin();
 
-		db = client["darts"];
-		collection = db["myCollection"];
-	}
-	catch (const std::exception &ex) {
-		LOG_F(ERROR, "%s", ex.what());
-		return 0;
-	}
+	//	db = client["darts"];
+	//	collection = db["mycollection"];
+	//}
+	//catch (const std::exception &ex) {
+	//	log_f(error, "%s", ex.what());
+	//	return 0;
+	//}
 
-	LOG_F(INFO, "Established connection to Darts DB.");
+	// LOG_F(INFO, "Established connection to Darts DB.");
 
 	// Try creating our endpoints and running our async (non blocking) webserver.
 	try {
@@ -145,13 +188,15 @@ int main(int argc, char* argv[])
 
 	LOG_F(INFO, "Port Audio started.");
 
+
 	// dart impact check loop
 	std::thread([] {
 		while (true) {
-			
-			if (currentAudioLevel >= -15) {
+		
+			if (currentAudioLevel >= -25.f) {
 				dartImpact = true;
-			}
+			}			
+
 			else {
 				dartImpact = false;
 			}
@@ -159,21 +204,22 @@ int main(int argc, char* argv[])
 
 	}).detach();
 
+	Sleep(1000);
+
 	LOG_F(INFO, "Dart Impact loop started.");
 
 	// main loop, non blocking.
 	std::thread([] {
 		while (true) {
+			Sleep(50);
 			if (!gameActive) continue;
 			if (!dartImpact) continue;
 
 			LOG_F(WARNING, "IMPACT");
+		
+			getPoints();
+			std::print("done");
 
-			// detect dart logic goes here
-
-			// upload values to webserver here
-
-			// we go again
 			
 		}
 	}).detach();
